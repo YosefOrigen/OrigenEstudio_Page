@@ -1,165 +1,366 @@
-
-/* definiciones de fuentes */
+/* Definiciones de fuentes personalizadas */
 @font-face {
   font-family: 'Gotham2';
   src: url('txt/Gotham-Light.otf') format('opentype');
   font-style: normal;
 }
+
+/* Variables de colores y estilos globales */
+:root {
+  --bg-color: #ffffff; /* Fondo casi negro para estética tech */
+  --accent-color: #2BBDE4; /* Cian eléctrico para acentos */
+  --glass-bg: rgba(255, 255, 255, 0.05); /* Fondo blanco muy traslúcido */
+  --glass-border: rgba(255, 255, 255, 0.1); /* Borde sutil para efecto cristal */
+  --text-main: #050505;
+  --text-secondary: #b0b0b0;
+}
+
+/* Reset básico de estilos */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Evita que el padding afecte el ancho total */
+  box-sizing: border-box;
 }
+
 body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* --- HEADER ADAPTADO CON EFECTO GLASSMORPHISM --- */
+.header-row {
+  position: fixed;
+  top: 30px;
+  width: 90%;
+  max-width: 1100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  z-index: 1000;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.header-row.hidden {
+  transform: translateY(-150px);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .header {
-  min-width: 60%;
-  height: 60px;
-  padding: 0 5%;
-  margin-top: 30px;
+  flex: 1;
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px); /* Desenfoque del fondo (Efecto Cristal) */
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  border-radius: 100px; /* Bordes totalmente redondeados */
+  padding: 9px 20px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  position: fixed;
-  z-index: 1000;
-  border-radius: 10px;
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, .1);
-  box-shadow: 0 2px 25px rgba(0,0,0,0.1);
+  gap: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.082);
 }
+
+/* Texto del Logo Central */
+.logo-text {
+  font-weight: 900;
+  letter-spacing: 3px;
+  font-size: 1.5rem;
+  color: var(--accent-color);
+  white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Menú de Navegación (Escritorio) */
 .nav-menu {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 25px;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 45%;
 }
+
 .nav-menu ul {
-  min-width: 390px;
   list-style: none;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.nav-menu li {
-  padding: 5px;
-  margin: 0 0.5rem;
-  border-radius: 5px;
-  box-shadow: 0 0 9px #e6e6e6;
-  outline: #ffffff6b 1px solid;
-}
-.nav-menu a, .nav-container a {
-  font-family: 'Gotham2';
-  font-weight: 100;
-  color: #272727;
-  text-decoration: none;
-}
-
-.banner {
+  /* gap: 12px; */
   width: 100%;
-  padding-top: 60px;
-  display: flex;
-  justify-content: center;
-}
-.banner video {
-  width: 30%;
-  height: auto;
-  object-fit: cover;
+  min-width: 0;
 }
 
-/* Estilos del menú hamburguesa */
+.header > .nav-menu:last-of-type {
+  justify-content: flex-end;
+}
+
+/* Botones del menú con fondo blanco */
+.nav-menu li {
+  padding: 5px 15px;
+  margin: 0 0.5rem;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.nav-menu li:hover {
+  transform: scale(1.05); /* Efecto de crecimiento al pasar el mouse */
+}
+
+/* Estilo para el botón resaltado Únete (Call to Action) */
+.nav-menu li.cta {
+  background-color: var(--accent-color);
+}
+
+/* Tipografía de los enlaces del menú */
+.nav-menu a, .nav-container a {
+  font-family: 'Gotham2', sans-serif;
+  font-weight: 100;
+  color: #272727; /* Texto oscuro para contrastar con el fondo blanco */
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+/* Estilos del menú hamburguesa (Oculto por defecto en desktop) */
 .menu-toggle {
   display: none;
 }
+
 .hamburger {
   display: none;
   flex-direction: column;
   cursor: pointer;
   padding: 10px;
 }
+
 .hamburger span {
   width: 25px;
   height: 3px;
-  background-color: #fff;
+  background-color: #111;
   margin: 3px 0;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
+
+/* Contenedor del menú móvil */
 .nav-container {
   display: none;
 }
 
-@media (max-width: 1000px) {
-  .logo {
-    margin: 0;
-  }
+.btn-unete,
+.nav-menu li.cta a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: #2BBDE4;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
-/* Estilos móviles */
-@media (max-width:850px) {
+.btn-unete:hover,
+.nav-menu li.cta a:hover {
+  transform: translateY(-1px);
+  background: #2BBDE4;
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+.main-content {
+  margin-top: 180px; /* Espacio para no chocar con el header fijo */
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Título Principal (Hero) */
+.hero-title {
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 20px;
+}
+
+.hero-title h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  line-height: 1;
+  /* Gradiente de texto blanco a gris */
+  background: linear-gradient(to bottom, #fff, #666);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --- HERO MEDIA --- */
+.hero-media {
+  width: 100%;
+  max-width: 300px;
+  margin: 32px auto;
+  overflow: hidden;
+  border-radius: 28px;
+}
+
+.hero-media video,
+.hero-media .hero-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* --- GRID DE ARTÍCULOS (CATÁLOGO) --- */
+.articles-grid {
+  display: grid;
+  /* Crea columnas automáticas que se ajustan al ancho de la pantalla */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  width: 100%;
+  margin-top: 60px;
+  margin-bottom: 100px;
+}
+
+/* Estilo de los bloques cuadrados (Tarjetas) */
+.card {
+  aspect-ratio: 1 / 1; /* Mantiene la proporción cuadrada */
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Empuja el texto hacia abajo */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  position: relative;
+}
+
+/* Efecto al pasar el mouse sobre la tarjeta */
+.card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-color);
+}
+
+.card h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* --- MEDIA QUERIES (ADAPTACIÓN MÓVIL) --- */
+@media (max-width: 850px) {
+  .header {
+      padding: 10px 20px;
+  }
+
+  /* Muestra el icono de menú hamburguesa */
   .hamburger {
-    display: flex;
+      display: flex;
   }
 
-  .logo {
-    position: absolute;
-    top: 7px;
-    left: 50%;
-    transform: translateX(-50%);
+  /* Centra el logo en móviles */
+  .logo-text {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
   }
 
+  /* Oculta el menú horizontal de escritorio */
   .nav-menu {
-    display: none;
+      display: none;
   }
 
+  /* Estilos del menú desplegable móvil */
   .nav-container {
-    display: block;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    opacity: 0;
-    transform: translateX(-100%);
-    visibility: hidden;
-    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s;
-    background-color: #333;
+      display: block;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      height: 0; /* Empieza colapsado */
+      opacity: 0;
+      transform: translateX(-100%);
+      visibility: hidden;
+      transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s;
+      background-color: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
   }
 
   .nav-container ul {
-    flex-direction: column;
-    gap: 10px;
-    margin: 5px 0;
-    text-align: center;
-    width: 100%;
+      list-style: none;
+      flex-direction: column;
+      gap: 10px;
+      padding: 22px;
+      text-align: center;
+      display: flex;
   }
 
   .nav-container li {
-    padding: 10px 0;
-    width: 100%;
-    background-color: royalblue;
-    box-shadow: inset 0px 7px 6px 0px rgba(0, 0, 0, 0.123);
+      padding: 15px 0;
+      width: 100%;
+      background-color: #f8f8f8;
+      border-radius: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.8);
   }
+
   .nav-container a {
-    font-family: 'Gotham2';
-    font-weight: 100;
-    color: #fff;
-    text-decoration: none;
+      color: #111;
+      font-weight: 700;
   }
 
+  .nav-container li.cta {
+      background-color: #111;
+      border-color: transparent;
+  }
+
+  .nav-container li.cta a {
+      color: #fff;
+  }
+
+  /* Lógica para mostrar el menú móvil cuando el checkbox está activado */
   .menu-toggle:checked ~ .nav-container {
-    height: 100vh;
-    transform: translatex(0);
-    opacity: 1;
-    visibility: visible;
+      height: auto;
+      transform: translateX(0);
+      opacity: 1;
+      visibility: visible;
   }
 
+  /* Animación de las barras del menú hamburguesa al abrirlo */
   .menu-toggle:checked ~ .hamburger span:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
+      transform: rotate(-45deg) translate(-5px, 6px);
   }
   .menu-toggle:checked ~ .hamburger span:nth-child(2) {
-    opacity: 0;
+      opacity: 0;
   }
   .menu-toggle:checked ~ .hamburger span:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
+      transform: rotate(45deg) translate(-5px, -6px);
   }
+
+  /* Ajustes de tamaño de texto y elementos para pantallas pequeñas */
+  .hero-title h1 { font-size: 2rem; }
+  .character-container { width: 250px; height: 250px; }
+  .character-head { width: 200px; height: 200px; }
+  .btn-unete { display: none; }
 }

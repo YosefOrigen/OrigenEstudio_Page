@@ -1,48 +1,115 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Origen Estudio</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="header">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Origen Estudio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     
-    <nav class="nav-menu">
-      <ul>
-        <li><a href="#">Proyectos</a></li>
-        <li><a href="#">Laboratorio</a></li>
-      </ul>
-    </nav>
-  
-    <nav class="nav-menu">
-      <ul>
-        <li><a href="#">Recursos</a></li>
-        <li><a href="#">Contacto</a></li>
-      </ul>
-    </nav>
-    
-    <input type="checkbox" id="menu-toggle" class="menu-toggle">
-    <label for="menu-toggle" class="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </label>
-    <div class="nav-container">
-      <ul>
-        <li><a href="#">Proyectos</a></li>
-        <li><a href="#">Laboratorio</a></li>
-        <li><a href="#">Recursos</a></li>
-        <li><a href="#">Contacto</a></li>
-      </ul>
+    <div class="header-row">
+      <header class="header">
+        <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+        <label for="menu-toggle" class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+
+        <nav class="nav-menu">
+          <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Juegos</a></li>
+          </ul>
+        </nav>
+
+        <div class="logo-text">YOSEF ORIGEN</div>
+
+        <nav class="nav-menu">
+          <ul>
+            <li><a href="#">Laboratorio</a></li>
+            <li><a href="#">Recursos</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-container">
+          <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Juegos</a></li>
+            <li><a href="#">Laboratorio</a></li>
+            <li><a href="#">Recursos</a></li>
+            <li class="cta"><a href="#">Únete</a></li>
+          </ul>
+        </div>
+      </header>
+
+      <a href="#" class="btn-unete">Únete</a>
     </div>
-  </header>
 
+    <main class="main-content">
+      <section class="hero">
+        <div class="hero-title">
+          <h1>Laboratorio de Desarrollo<br />& Proyectos Indie</h1>
+        </div>
 
-  <section class="banner">
-    <video src="img/yosef.webm" autoplay muted loop>
-    </video>
-  </section>
-</body>
+        <div class="hero-media">
+          <video class="hero-video" autoplay muted loop playsinline>
+            <source src="img/yosef.webm" type="video/webm" />
+            Tu navegador no soporta video WebM.
+          </video>
+        </div>
+      </section>
+
+      <section class="articles-grid">
+        <article class="card">
+          <h3>Último Proyecto</h3>
+          <p>
+            Explora la documentación técnica y el prototipo funcional de mi
+            último lanzamiento.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Pack de Assets 2D</h3>
+          <p>
+            Descarga directa de spritesheets y elementos de interfaz para tus
+            proyectos.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Workshop</h3>
+          <p>Lógica avanzada de saltos y colisiones para motores 2D.</p>
+        </article>
+
+        <article class="card">
+          <h3>Devlog</h3>
+          <p>Análisis de optimización y gestión de estados en videojuegos.</p>
+        </article>
+      </section>
+    </main>
+
+    <script>
+      let lastScrollTop = 0;
+      const headerRow = document.querySelector('.header-row');
+      const scrollThreshold = 50; // Umbral mínimo de píxeles para activar el cambio
+
+      window.addEventListener('scroll', function() {
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        const diff = Math.abs(currentScroll - lastScrollTop);
+
+        if (diff > scrollThreshold) {
+          if (currentScroll > lastScrollTop) {
+            // Scrolling DOWN - Esconder nav
+            headerRow.classList.add('hidden');
+          } else {
+            // Scrolling UP - Mostrar nav
+            headerRow.classList.remove('hidden');
+          }
+          lastScrollTop = currentScroll;
+        }
+      });
+    </script>
+  </body>
 </html>
