@@ -1,18 +1,48 @@
 /* Definiciones de fuentes personalizadas */
 @font-face {
-  font-family: 'Gotham2';
-  src: url('txt/Gotham-Light.otf') format('opentype');
+  font-family: 'BarlowCondensed';
+  font-weight: 900;
+  src: url('txt/BarlowCondensed-Black.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BarlowCondensed';
+  font-weight: 800;
+  src: url('txt/BarlowCondensed-ExtraBold.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BarlowCondensed';
+  font-weight: 700;
+  src: url('txt/BarlowCondensed-Bold.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-weight: 400;
+  src: url('txt/Inter_18pt-Regular.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-weight: 600;
+  src: url('txt/Inter_18pt-SemiBold.ttf') format('truetype');
   font-style: normal;
 }
 
 /* Variables de colores y estilos globales */
 :root {
   --bg-color: #ffffff; /* Fondo casi negro para estética tech */
-  --accent-color: #2BBDE4; /* Cian eléctrico para acentos */
+  --accent-color: #00a5fe; /* Cian eléctrico para acentos */
   --glass-bg: rgba(255, 255, 255, 0.05); /* Fondo blanco muy traslúcido */
   --glass-border: rgba(255, 255, 255, 0.1); /* Borde sutil para efecto cristal */
   --text-main: #050505;
   --text-secondary: #b0b0b0;
+  --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 /* Reset básico de estilos */
@@ -26,6 +56,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-main);
   font-family: 'Inter', sans-serif;
+  font-weight: 400;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -70,22 +101,19 @@ body {
 
 /* Texto del Logo Central */
 .logo-text {
+  font-family: 'BarlowCondensed', sans-serif;
   font-weight: 900;
-  letter-spacing: 3px;
-  font-size: 1.5rem;
+  letter-spacing: 2px;
+  font-size: 1.9rem;
   color: var(--accent-color);
   white-space: nowrap;
-  font-family: 'Inter', sans-serif;
 }
 
 /* Menú de Navegación (Escritorio) */
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 25px;
-  flex: 0 1 auto;
-  min-width: 0;
-  max-width: 45%;
+  flex: 1;
 }
 
 .nav-menu ul {
@@ -93,25 +121,23 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* gap: 12px; */
+  gap: 1rem;
   width: 100%;
   min-width: 0;
-}
-
-.header > .nav-menu:last-of-type {
-  justify-content: flex-end;
 }
 
 /* Botones del menú con fondo blanco */
 .nav-menu li {
   padding: 5px 15px;
-  margin: 0 0.5rem;
   border-radius: 10px;
   background-color: white;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .nav-menu li:hover {
-  transform: scale(1.05); /* Efecto de crecimiento al pasar el mouse */
+  background-color: rgba(43, 189, 228, 0.1);
+  border-color: rgba(26, 143, 184, 0.8);
 }
 
 /* Estilo para el botón resaltado Únete (Call to Action) */
@@ -120,12 +146,15 @@ body {
 }
 
 /* Tipografía de los enlaces del menú */
-.nav-menu a, .nav-container a {
-  font-family: 'Gotham2', sans-serif;
-  font-weight: 100;
-  color: #272727; /* Texto oscuro para contrastar con el fondo blanco */
+.nav-menu a,
+.nav-container a {
+  text-transform: uppercase;
+  font-family: 'BarlowCondensed', sans-serif;
+  font-weight: 700;
+  color: #444444; /* Texto oscuro para contrastar con el fondo blanco */
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 1.15rem;
+  transition: var(--transition-smooth);
 }
 
 /* Estilos del menú hamburguesa (Oculto por defecto en desktop) */
@@ -160,22 +189,25 @@ body {
   justify-content: center;
   padding: 12px 22px;
   border-radius: 999px;
-  background: #2BBDE4;
   color: #fff;
-  font-weight: 700;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
-.btn-unete:hover,
-.nav-menu li.cta a:hover {
-  transform: translateY(-1px);
-  background: #2BBDE4;
+.btn-unete {
+  background: var(--accent-color);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
 }
 
-/* --- CONTENIDO PRINCIPAL --- */
+.nav-menu li.cta a {
+  background: transparent;
+  font-family: 'BarlowCondensed', sans-serif;
+  font-weight: 700;
+}
+
 .main-content {
-  margin-top: 180px; /* Espacio para no chocar con el header fijo */
+  margin-top: 120px; /* Espacio para no chocar con el header fijo */
   width: 90%;
   max-width: 1200px;
   display: flex;
@@ -187,27 +219,35 @@ body {
 .hero-title {
   text-align: center;
   max-width: 800px;
-  margin-bottom: 20px;
 }
 
 .hero-title h1 {
-  font-size: 2.8rem;
+  font-family: 'BarlowCondensed', sans-serif;
+  font-size: 6.0rem;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -1px;
-  line-height: 1;
-  /* Gradiente de texto blanco a gris */
-  background: linear-gradient(to bottom, #fff, #666);
+  line-height: 0.9;
+  background: linear-gradient(150deg, #08639b 0%, #00a5fe 60%);;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.hero-title p {
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-top: 8px;
 }
 
 /* --- HERO MEDIA --- */
 .hero-media {
   width: 100%;
   max-width: 300px;
-  margin: 32px auto;
+  margin: 0px auto;
   overflow: hidden;
   border-radius: 28px;
 }
@@ -254,6 +294,7 @@ body {
 }
 
 .card h3 {
+  font-family: 'BarlowCondensed', sans-serif;
   font-size: 1.4rem;
   font-weight: 800;
   margin-bottom: 8px;
@@ -262,6 +303,7 @@ body {
 
 .card p {
   font-size: 0.85rem;
+  font-weight: 400;
   color: var(--text-secondary);
   line-height: 1.4;
 }
@@ -282,6 +324,7 @@ body {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
+      font-size: 1.9rem;
   }
 
   /* Oculta el menú horizontal de escritorio */
@@ -327,7 +370,6 @@ body {
 
   .nav-container a {
       color: #111;
-      font-weight: 700;
   }
 
   .nav-container li.cta {
@@ -359,8 +401,6 @@ body {
   }
 
   /* Ajustes de tamaño de texto y elementos para pantallas pequeñas */
-  .hero-title h1 { font-size: 2rem; }
-  .character-container { width: 250px; height: 250px; }
-  .character-head { width: 200px; height: 200px; }
+  .hero-title h1 { font-size: 6rem; }
   .btn-unete { display: none; }
 }
