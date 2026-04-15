@@ -172,7 +172,7 @@ body {
 .hamburger span {
   width: 25px;
   height: 3px;
-  background-color: #111;
+  background-color: #444444;
   margin: 3px 0;
   transition: 0.3s ease;
 }
@@ -264,7 +264,7 @@ body {
 .articles-grid {
   display: grid;
   /* Crea columnas automáticas que se ajustan al ancho de la pantalla */
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 25px;
   width: 100%;
   margin-top: 60px;
@@ -274,16 +274,33 @@ body {
 /* Estilo de los bloques cuadrados (Tarjetas) */
 .card {
   aspect-ratio: 1 / 1; /* Mantiene la proporción cuadrada */
+  min-width: 260px;
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 24px;
-  padding: 30px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Empuja el texto hacia abajo */
+  gap: 18px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
-  position: relative;
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 120px;
+  background: rgba(43, 188, 228, 0.075);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #016b9c4f;
+  font-weight: 900;
+  font-family: 'BarlowCondensed', sans-serif;
+  font-size: 3.4rem;
+  margin: 0;
 }
 
 /* Efecto al pasar el mouse sobre la tarjeta */
@@ -295,6 +312,7 @@ body {
 
 .card h3 {
   font-family: 'BarlowCondensed', sans-serif;
+  color: #444444;
   font-size: 1.4rem;
   font-weight: 800;
   margin-bottom: 8px;
@@ -401,7 +419,7 @@ body {
   }
 
   /* Ajustes de tamaño de texto y elementos para pantallas pequeñas */
-  .hero-title h1 { font-size: 4rem; }
-  .hero-title p { font-size: 0.8rem; }
+  .hero-title h1 { font-size: 3.5rem; }
+  .hero-title p { font-size: 0.6rem; margin-top: 4px; }
   .btn-unete { display: none; }
 }
