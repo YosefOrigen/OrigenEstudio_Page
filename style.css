@@ -37,7 +37,7 @@
 /* Variables de colores y estilos globales */
 :root {
   --bg-color: #ffffff; /* Fondo casi negro para estética tech */
-  --accent-color: #00a5fe; /* Cian eléctrico para acentos */
+  --accent-color: #24C2E4; /* Cian eléctrico para acentos */
   --glass-bg: rgba(255, 255, 255, 0.05); /* Fondo blanco muy traslúcido */
   --glass-border: rgba(255, 255, 255, 0.1); /* Borde sutil para efecto cristal */
   --text-main: #050505;
@@ -228,7 +228,7 @@ body {
   text-transform: uppercase;
   letter-spacing: -1px;
   line-height: 0.9;
-  background: linear-gradient(150deg, #08639b 0%, #00a5fe 60%);;
+  background: linear-gradient(150deg, #016C9C 0%, #24C2E4 80%);;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -401,6 +401,7 @@ body {
   }
 
   /* Ajustes de tamaño de texto y elementos para pantallas pequeñas */
-  .hero-title h1 { font-size: 6rem; }
+  .hero-title h1 { font-size: 4rem; }
+  .hero-title p { font-size: 0.8rem; }
   .btn-unete { display: none; }
 }
