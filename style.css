@@ -107,27 +107,33 @@ body {
   font-size: 1.9rem;
   color: var(--accent-color);
   white-space: nowrap;
+  padding-left: inherit;
 }
 
 /* Menú de Navegación (Escritorio) */
-.nav-menu {
-  display: flex;
-  align-items: center;
+.nav {
   flex: 1;
-}
-
-.nav-menu ul {
-  list-style: none;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.nav-list,
+.social-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
   gap: 1rem;
   width: 100%;
   min-width: 0;
 }
 
-/* Botones del menú con fondo blanco */
-.nav-menu li {
+.nav-list li {
   padding: 5px 15px;
   border-radius: 10px;
   background-color: white;
@@ -135,26 +141,34 @@ body {
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.nav-menu li:hover {
+.nav-list li:hover {
   background-color: rgba(43, 189, 228, 0.1);
   border-color: rgba(26, 143, 184, 0.8);
 }
 
-/* Estilo para el botón resaltado Únete (Call to Action) */
-.nav-menu li.cta {
+.nav-list li.cta {
+  padding: 0;
+  border-radius: 999px;
   background-color: var(--accent-color);
+  border-color: transparent;
 }
 
-/* Tipografía de los enlaces del menú */
-.nav-menu a,
-.nav-container a {
+.nav a {
   text-transform: uppercase;
   font-family: 'BarlowCondensed', sans-serif;
   font-weight: 700;
-  color: #444444; /* Texto oscuro para contrastar con el fondo blanco */
+  color: #444444;
   text-decoration: none;
   font-size: 1.15rem;
   transition: var(--transition-smooth);
+}
+
+.nav-list li.cta a {
+  color: #fff;
+}
+
+.nav a:hover {
+  color: var(--accent-color);
 }
 
 /* Estilos del menú hamburguesa (Oculto por defecto en desktop) */
@@ -178,12 +192,8 @@ body {
 }
 
 /* Contenedor del menú móvil */
-.nav-container {
-  display: none;
-}
 
-.btn-unete,
-.nav-menu li.cta a {
+.cta a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -192,18 +202,9 @@ body {
   color: #fff;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-}
-
-.btn-unete {
-  background: var(--accent-color);
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-}
-
-.nav-menu li.cta a {
-  background: transparent;
   font-family: 'BarlowCondensed', sans-serif;
   font-weight: 700;
+  background: transparent;
 }
 
 .main-content {
@@ -213,6 +214,141 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.footer {
+  width: 100%;
+  background: #52CBFA;
+  padding: 30px 40px;
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+.footer-banner {
+  display: flex;
+  justify-content: center;
+
+}
+.footer-banner img {
+  width: 100%;
+  height: auto;
+}
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.creator-name {
+  font-family: 'BarlowCondensed', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #016C9C;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.copyright {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: #ffffff;
+  margin: 0;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+}
+
+.social-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+  position: relative;
+}
+
+.social-icon::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.social-icon img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.social-icon:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 15px 35px rgba(1, 108, 156, 0.3);
+}
+
+.social-icon:hover::before {
+  opacity: 1;
+}
+
+.social-icon:hover img {
+  filter: brightness(0.8);
+}
+
+.social-icon:active {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+  }
+  
+  .footer-left {
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .social-links {
+    gap: 18px;
+  }
+  
+  .social-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .social-icon img {
+    width: 28px;
+    height: 28px;
+  }
 }
 
 /* Título Principal (Hero) */
@@ -252,8 +388,7 @@ body {
   border-radius: 28px;
 }
 
-.hero-media video,
-.hero-media .hero-video {
+.hero-media video {
   width: 100%;
   height: auto;
   display: block;
@@ -345,19 +480,14 @@ body {
       font-size: 1.9rem;
   }
 
-  /* Oculta el menú horizontal de escritorio */
-  .nav-menu {
-      display: none;
-  }
-
   /* Estilos del menú desplegable móvil */
-  .nav-container {
+  .nav {
       display: block;
       position: absolute;
       top: 70px;
       left: 0;
       width: 100%;
-      height: 0; /* Empieza colapsado */
+      height: 0;
       opacity: 0;
       transform: translateX(-100%);
       visibility: hidden;
@@ -368,8 +498,7 @@ body {
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
   }
 
-  .nav-container ul {
-      list-style: none;
+  .nav-list {
       flex-direction: column;
       gap: 10px;
       padding: 22px;
@@ -377,7 +506,7 @@ body {
       display: flex;
   }
 
-  .nav-container li {
+  .nav-list li {
       padding: 15px 0;
       width: 100%;
       background-color: #f8f8f8;
@@ -386,21 +515,21 @@ body {
       box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.8);
   }
 
-  .nav-container a {
+  .nav-list a {
       color: #111;
   }
 
-  .nav-container li.cta {
+  .nav-list li.cta {
       background-color: #111;
       border-color: transparent;
   }
 
-  .nav-container li.cta a {
+  .nav-list li.cta a {
       color: #fff;
   }
 
   /* Lógica para mostrar el menú móvil cuando el checkbox está activado */
-  .menu-toggle:checked ~ .nav-container {
+  .menu-toggle:checked ~ .nav {
       height: auto;
       transform: translateX(0);
       opacity: 1;
@@ -421,5 +550,4 @@ body {
   /* Ajustes de tamaño de texto y elementos para pantallas pequeñas */
   .hero-title h1 { font-size: 3.5rem; }
   .hero-title p { font-size: 0.6rem; margin-top: 4px; }
-  .btn-unete { display: none; }
 }
