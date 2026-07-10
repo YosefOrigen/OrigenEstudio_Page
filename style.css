@@ -536,18 +536,5 @@ body {
       visibility: visible;
   }
 
-  /* Animación de las barras del menú hamburguesa al abrirlo */
-  .menu-toggle:checked ~ .hamburger span:nth-child(1) {
-      transform: rotate(-45deg) translate(-5px, 6px);
-  }
-  .menu-toggle:checked ~ .hamburger span:nth-child(2) {
-      opacity: 0;
-  }
-  .menu-toggle:checked ~ .hamburger span:nth-child(3) {
-      transform: rotate(45deg) translate(-5px, -6px);
-  }
-
-  /* Ajustes de tamaño de texto y elementos para pantallas pequeñas */
-  .hero-title h1 { font-size: 3.5rem; }
-  .hero-title p { font-size: 0.6rem; margin-top: 4px; }
 }
+
