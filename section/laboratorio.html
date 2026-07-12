@@ -8,52 +8,54 @@
   <link rel="stylesheet" href="laboratorio.css">
 </head>
 <body>
-  <div class="header-row">
-    <header class="header">
-      <div class="logo-text">Laboratorio — Origen Estudio</div>
-      <nav class="nav">
-        <ul class="nav-list">
+  <!-- Encabezado principal compartido con diseño profesional -->
+  <div class="fila-encabezado">
+    <header class="encabezado">
+      <div class="marca">Laboratorio — Origen Estudio</div>
+      <nav class="menu-principal" role="navigation" aria-label="Navegación principal">
+        <ul class="lista-navegacion">
           <li><a href="../index.html">Inicio</a></li>
           <li><a href="#">Juegos</a></li>
           <li><a href="laboratorio.html">Laboratorio</a></li>
           <li><a href="#">Recursos</a></li>
-          <li class="cta"><a href="#">Únete</a></li>
+          <li class="accion-principal"><a href="#">Únete</a></li>
         </ul>
       </nav>
     </header>
   </div>
 
-  <div class="lab-sectionbar" role="navigation" aria-label="Secciones del laboratorio">
-    <a class="lab-btn" href="#que-es-un-motor">Introducción</a>
-    <a class="lab-btn" href="#assets">Assets</a>
-    <a class="lab-btn" href="#desarrollo">Desarrollo</a>
-    <a class="lab-btn" href="#por-donde-empezar">Por dónde empezar</a>
+  <!-- Barra de secciones del laboratorio, fija debajo del encabezado -->
+  <div class="barra-secciones" role="navigation" aria-label="Secciones del laboratorio">
+      <a class="boton-seccion" href="#que-es-un-motor">Introducción</a>
+      <a class="boton-seccion" href="#recursos">Recursos</a>
+      <a class="boton-seccion" href="#desarrollo">Desarrollo</a>
+      <a class="boton-seccion" href="#por-donde-empezar">Por dónde empezar</a>
   </div>
-  <div class="page-layout">
-    <aside class="sidebar">
-      <div class="sidebar-panel">
-        <div class="sidebar-title">
-          <span class="sidebar-meta">Navegación</span>
+  <div class="contenido-principal">
+    <aside class="barra-lateral">
+      <div class="panel-lateral">
+        <div class="titulo-lateral">
+          <span class="meta-lateral">Navegación</span>
           <h2>Contenido</h2>
         </div>
-        <nav class="sidebar-nav" aria-label="Menú de navegación">
-          <div class="accordion-section">
-            <button class="accordion-toggle active" type="button" aria-expanded="true">
+        <nav class="navegacion-lateral" role="navigation" aria-label="Menú lateral">
+          <div class="seccion-acordeon">
+            <button class="boton-acordeon activo" type="button" aria-expanded="true">
               Introducción
-              <span class="accordion-icon">▾</span>
+              <span class="icono-acordeon">▾</span>
             </button>
-            <ul class="accordion-content open">
+            <ul class="contenido-acordeon abierto">
               <li><a href="#que-es-un-motor">¿Qué es un motor de videojuego?</a></li>
               <li><a href="#motor-vs-codigo">¿Motor vs. Código?</a></li>
               <li><a href="#por-donde-empezar">¿Por dónde empezar?</a></li>
             </ul>
           </div>
-          <div class="accordion-section">
-            <button class="accordion-toggle" type="button" aria-expanded="false">
+          <div class="seccion-acordeon">
+            <button class="boton-acordeon" type="button" aria-expanded="false">
               Código
-              <span class="accordion-icon">▾</span>
+              <span class="icono-acordeon">▾</span>
             </button>
-            <ul class="accordion-content">
+            <ul class="contenido-acordeon">
               <li><a href="#html-codigo">HTML del menú lateral</a></li>
               <li><a href="#css-codigo">CSS para sidebar fijo</a></li>
               <li><a href="#js-acordeon">JS para acordeón</a></li>
@@ -63,40 +65,40 @@
       </div>
     </aside>
 
-    <main class="content">
-      <section id="que-es-un-motor" class="section-card">
+    <main class="contenido">
+      <section id="que-es-un-motor" class="tarjeta">
         <h1>Introducción</h1>
         <p>Un motor de videojuego es el conjunto de herramientas, sistemas y recursos que hacen posible construir, renderizar y ejecutar una experiencia interactiva. Incluye física, audio, animaciones, renderizado y gestión de escenas.</p>
       </section>
 
-      <section id="motor-vs-codigo" class="section-card">
+      <section id="motor-vs-codigo" class="tarjeta">
         <h2>¿Motor vs. Código?</h2>
         <p>El motor ofrece la infraestructura técnica base; el código define la lógica, la jugabilidad y los comportamientos personalizados. Juntos permiten iterar más rápido y centrar el desarrollo en la experiencia del jugador.</p>
       </section>
 
-      <section id="por-donde-empezar" class="section-card">
+      <section id="por-donde-empezar" class="tarjeta">
         <h2>¿Por dónde empezar?</h2>
         <p>Empieza por comprender los componentes principales del motor y su flujo de trabajo. Después, crea proyectos pequeños para aplicar conceptos y elaborar tu propia metodología de desarrollo.</p>
       </section>
 
-      <section id="assets" class="section-card">
-        <h2>Assets</h2>
+      <section id="recursos" class="tarjeta">
+        <h2>Recursos</h2>
         <p>Recursos gráficos, sprites, audio y packs listos para integrar en proyectos.</p>
       </section>
 
-      <section id="desarrollo" class="section-card">
+      <section id="desarrollo" class="tarjeta">
         <h2>Desarrollo</h2>
         <p>Guías y ejemplos sobre flujo de trabajo, control de versiones y despliegue de prototipos.</p>
       </section>
 
-      <section id="html-codigo" class="section-card">
+      <section id="html-codigo" class="tarjeta">
         <h2>Código: HTML del menú lateral</h2>
         <p>El menú lateral utiliza una estructura semántica con <code>aside</code>, botones de acordeón y enlaces de navegación interna.</p>
-        <pre><code>&lt;aside class="sidebar"&gt;
-  &lt;nav class="sidebar-nav"&gt;
-    &lt;div class="accordion-section"&gt;
-      &lt;button class="accordion-toggle"&gt;Introducción&lt;/button&gt;
-      &lt;ul class="accordion-content"&gt;
+        <pre><code>&lt;aside class="barra-lateral"&gt;
+  &lt;nav class="navegacion-lateral"&gt;
+    &lt;div class="seccion-acordeon"&gt;
+      &lt;button class="boton-acordeon"&gt;Introducción&lt;/button&gt;
+      &lt;ul class="contenido-acordeon"&gt;
         &lt;li&gt;&lt;a href="#que-es-un-motor"&gt;¿Qué es un motor de videojuego?&lt;/a&gt;&lt;/li&gt;
       &lt;/ul&gt;
     &lt;/div&gt;
@@ -104,10 +106,10 @@
 &lt;/aside&gt;</code></pre>
       </section>
 
-      <section id="css-codigo" class="section-card">
+      <section id="css-codigo" class="tarjeta">
         <h2>CSS para sidebar fijo</h2>
         <p>El estilo aplica <code>position: sticky</code> para que el menú permanezca visible al desplazarse, junto con un diseño moderno y legible.</p>
-        <pre><code>.sidebar {
+        <pre><code>.barra-lateral {
   position: sticky;
   top: 1.5rem;
   max-height: calc(100vh - 3rem);
@@ -119,15 +121,15 @@
 }</code></pre>
       </section>
 
-      <section id="js-acordeon" class="section-card">
+      <section id="js-acordeon" class="tarjeta">
         <h2>JS para acordeón</h2>
         <p>La función alterna el panel oculto o visible y ajusta el <code>max-height</code> para una transición suave.</p>
-        <pre><code>document.querySelectorAll('.accordion-toggle').forEach((toggle) =&gt; {
+        <pre><code>document.querySelectorAll('.boton-acordeon').forEach((toggle) =&gt; {
   toggle.addEventListener('click', () =&gt; {
     const panel = toggle.nextElementSibling;
-    const opened = panel.classList.toggle('open');
+    const opened = panel.classList.toggle('abierto');
     toggle.setAttribute('aria-expanded', opened);
-    toggle.classList.toggle('active', opened);
+    toggle.classList.toggle('activo', opened);
     panel.style.maxHeight = opened ? panel.scrollHeight + 'px' : null;
   });
 });</code></pre>
@@ -136,53 +138,34 @@
   </div>
 
   <script>
-    document.querySelectorAll('.accordion-toggle').forEach((toggle) => {
+    document.querySelectorAll('.boton-acordeon').forEach((toggle) => {
       toggle.addEventListener('click', () => {
         const panel = toggle.nextElementSibling;
-        const opened = panel.classList.toggle('open');
+        const opened = panel.classList.toggle('abierto');
         toggle.setAttribute('aria-expanded', opened);
-        toggle.classList.toggle('active', opened);
+        toggle.classList.toggle('activo', opened);
         panel.style.maxHeight = opened ? panel.scrollHeight + 'px' : null;
       });
     });
 
-    document.querySelectorAll('.accordion-content.open').forEach((panel) => {
+    document.querySelectorAll('.contenido-acordeon.abierto').forEach((panel) => {
       panel.style.maxHeight = panel.scrollHeight + 'px';
     });
   </script>
   <script>
     (function() {
-      const headerRow = document.querySelector('.header-row');
-      const sectionbar = document.querySelector('.lab-sectionbar');
       let lastScroll = window.pageYOffset || document.documentElement.scrollTop;
       const hideAfter = 120; // pixels scrolled from top before hiding
-
-      function positionSectionBar() {
-        if (!sectionbar) return;
-        const h = headerRow ? headerRow.offsetHeight : 0;
-        sectionbar.style.top = h + 'px';
-      }
-
-      // initial placement
-      positionSectionBar();
-      window.addEventListener('resize', positionSectionBar, { passive: true });
 
       window.addEventListener('scroll', () => {
         const current = window.pageYOffset || document.documentElement.scrollTop;
 
-        if (!headerRow) {
-          lastScroll = current;
-          return;
-        }
-
         if (current > lastScroll && current > hideAfter) {
-          // scrolling down: hide header and pin section bar to top
-          headerRow.style.display = 'none';
-          if (sectionbar) sectionbar.style.top = '0';
+          // bajando: oculto el encabezado y dejo la barra de secciones arriba
+          document.body.classList.add('sin-encabezado');
         } else if (current < lastScroll) {
-          // scrolling up: show header and position section bar under it
-          headerRow.style.display = '';
-          positionSectionBar();
+          // subiendo: muestro el encabezado otra vez
+          document.body.classList.remove('sin-encabezado');
         }
 
         lastScroll = current;
