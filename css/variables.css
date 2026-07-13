@@ -1,0 +1,55 @@
+/*
+  variables.css
+  - Contiene fuentes locales y variables CSS globales.
+  - Añadimos `font-display: swap` para evitar FOIT (Flash Of Invisible Text).
+*/
+
+@font-face {
+  font-family: 'BarlowCondensed';
+  font-weight: 900;
+  src: url('../txt/BarlowCondensed-Black.ttf') format('truetype');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BarlowCondensed';
+  font-weight: 800;
+  src: url('../txt/BarlowCondensed-ExtraBold.ttf') format('truetype');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BarlowCondensed';
+  font-weight: 700;
+  src: url('../txt/BarlowCondensed-Bold.ttf') format('truetype');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-weight: 400;
+  src: url('../txt/Inter_18pt-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-weight: 600;
+  src: url('../txt/Inter_18pt-SemiBold.ttf') format('truetype');
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg-color: #ffffff;
+  --accent-color: #24C2E4;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-main: #050505;
+  --text-secondary: #b0b0b0;
+  --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}

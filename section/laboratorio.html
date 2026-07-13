@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Laboratorio</title>
-  <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="laboratorio.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/componentes.css">
 </head>
 <body>
-  <!-- Encabezado principal compartido con diseño profesional -->
-  <div class="fila-encabezado">
-    <header class="encabezado">
+  <!-- Encabezado principal variante 2 (laboratorio) -->
+  <div class="fila-encabezado_2">
+    <header class="encabezado_2">
       <div class="marca">Laboratorio — Origen Estudio</div>
       <nav class="menu-principal" role="navigation" aria-label="Navegación principal">
         <ul class="lista-navegacion">
@@ -40,22 +40,22 @@
         </div>
         <nav class="navegacion-lateral" role="navigation" aria-label="Menú lateral">
           <div class="seccion-acordeon">
-            <button class="boton-acordeon activo" type="button" aria-expanded="true">
+            <button id="toggle-introduccion" class="boton-acordeon activo" type="button" aria-expanded="true" aria-controls="panel-introduccion">
               Introducción
               <span class="icono-acordeon">▾</span>
             </button>
-            <ul class="contenido-acordeon abierto">
+            <ul id="panel-introduccion" class="contenido-acordeon abierto" role="region" aria-labelledby="toggle-introduccion">
               <li><a href="#que-es-un-motor">¿Qué es un motor de videojuego?</a></li>
               <li><a href="#motor-vs-codigo">¿Motor vs. Código?</a></li>
               <li><a href="#por-donde-empezar">¿Por dónde empezar?</a></li>
             </ul>
           </div>
           <div class="seccion-acordeon">
-            <button class="boton-acordeon" type="button" aria-expanded="false">
+            <button id="toggle-codigo" class="boton-acordeon" type="button" aria-expanded="false" aria-controls="panel-codigo">
               Código
               <span class="icono-acordeon">▾</span>
             </button>
-            <ul class="contenido-acordeon">
+            <ul id="panel-codigo" class="contenido-acordeon" role="region" aria-labelledby="toggle-codigo">
               <li><a href="#html-codigo">HTML del menú lateral</a></li>
               <li><a href="#css-codigo">CSS para sidebar fijo</a></li>
               <li><a href="#js-acordeon">JS para acordeón</a></li>
@@ -138,9 +138,19 @@
   </div>
 
   <script>
+    // Acordeón accesible: click + teclado (Enter / Espacio)
     document.querySelectorAll('.boton-acordeon').forEach((toggle) => {
+      // Permitir alternar con Enter / Space
+      toggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle.click();
+        }
+      });
+
       toggle.addEventListener('click', () => {
-        const panel = toggle.nextElementSibling;
+        const panelId = toggle.getAttribute('aria-controls');
+        const panel = document.getElementById(panelId) || toggle.nextElementSibling;
         const opened = panel.classList.toggle('abierto');
         toggle.setAttribute('aria-expanded', opened);
         toggle.classList.toggle('activo', opened);
@@ -148,6 +158,7 @@
       });
     });
 
+    // Asegurar que los paneles marcados como 'abierto' tengan la altura correcta
     document.querySelectorAll('.contenido-acordeon.abierto').forEach((panel) => {
       panel.style.maxHeight = panel.scrollHeight + 'px';
     });
