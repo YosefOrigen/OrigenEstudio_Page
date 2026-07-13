@@ -4,6 +4,7 @@
   - Añadimos `font-display: swap` para evitar FOIT (Flash Of Invisible Text).
 */
 
+/* tipografía más gruesa, utilizada el logo Yosef y en titulos */
 @font-face {
   font-family: 'BarlowCondensed';
   font-weight: 900;
@@ -46,10 +47,13 @@
 
 :root {
   --bg-color: #ffffff;
-  --accent-color: #24C2E4;
+  --azul-principal: #24C2E4;
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
   --text-main: #050505;
   --text-secondary: #b0b0b0;
   --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  --alto-encabezado-1: 104px;
+  --alto-encabezado-2: 88px;
+  --espacio-barra-secciones: 16px;
 }

@@ -113,25 +113,26 @@
     </div>
 
     <script>
-      let lastScrollTop = 0;
-      const headerRow = document.querySelector('.header-row');
-      const scrollThreshold = 200; // Umbral mínimo de píxeles para activar el cambio
+      let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const headerRow = document.querySelector('.fila-encabezado_1');
+      const scrollThreshold = 1; // Umbral muy bajo para reaccionar rápidamente
 
       window.addEventListener('scroll', function() {
-        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-        const diff = Math.abs(currentScroll - lastScrollTop);
-
-        if (diff > scrollThreshold) {
-          if (currentScroll > lastScrollTop) {
-            // Scrolling DOWN - Esconder nav
-            headerRow.classList.add('hidden');
-          } else {
-            // Scrolling UP - Mostrar nav
-            headerRow.classList.remove('hidden');
-          }
-          lastScrollTop = currentScroll;
+        if (!headerRow) {
+          return;
         }
-      });
+
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        const delta = currentScroll - lastScrollTop;
+
+        if (delta > scrollThreshold && currentScroll > 200) {
+          headerRow.classList.add('hidden');
+        } else if (delta < -scrollThreshold) {
+          headerRow.classList.remove('hidden');
+        }
+
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+      }, { passive: true });
     </script>
   </body>
 </html>
